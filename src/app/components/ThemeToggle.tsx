@@ -1,11 +1,25 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export default function ThemeToggle() {
   const [darkMode, setDarkMode] = useState<boolean>(false);
   // State để kiểm tra đã mounted chưa
   const [mounted, setMounted] = useState<boolean>(false);
+
+  const applyTheme = useCallback((isDark: boolean) => {
+    if (!mounted) return;
+    
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.style.setProperty('--background', '#0a0a0a');
+      document.documentElement.style.setProperty('--foreground', '#ededed');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.style.setProperty('--background', '#ffffff');
+      document.documentElement.style.setProperty('--foreground', '#171717');
+    }
+  }, [mounted]);
 
   useEffect(() => {
     setMounted(true);
@@ -22,27 +36,13 @@ export default function ThemeToggle() {
     
     setDarkMode(shouldBeDark);
     applyTheme(shouldBeDark);
-  }, []);
+  }, [applyTheme]);
 
   const toggleTheme = () => {
     const newDarkMode = !darkMode;
     setDarkMode(newDarkMode);
     applyTheme(newDarkMode);
     localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
-  };
-
-  const applyTheme = (isDark: boolean) => {
-    if (!mounted) return;
-    
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      document.documentElement.style.setProperty('--background', '#0a0a0a');
-      document.documentElement.style.setProperty('--foreground', '#ededed');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.style.setProperty('--background', '#ffffff');
-      document.documentElement.style.setProperty('--foreground', '#171717');
-    }
   };
 
   // Không render nút cho đến khi đã mounted để tránh hydration mismatch

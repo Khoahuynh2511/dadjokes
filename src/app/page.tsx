@@ -74,7 +74,6 @@ export default function Home() {
               key={key} 
               category={category} 
               contentFilter={contentFilter} 
-              onReadAloud={handleReadAloud} 
             />
           </div>
 

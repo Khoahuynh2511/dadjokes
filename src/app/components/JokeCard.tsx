@@ -12,10 +12,9 @@ type JokeType = {
 type JokeCardProps = {
   category: string;
   contentFilter: string;
-  onReadAloud: () => void;
 };
 
-export default function JokeCard({ category, contentFilter, onReadAloud }: JokeCardProps) {
+export default function JokeCard({ category, contentFilter }: JokeCardProps) {
   const [joke, setJoke] = useState<JokeType | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -48,7 +47,7 @@ export default function JokeCard({ category, contentFilter, onReadAloud }: JokeC
 
   useEffect(() => {
     fetchJoke();
-  }, [category, contentFilter]);
+  }, [category, contentFilter, fetchJoke]);
 
   if (loading) {
     return (
