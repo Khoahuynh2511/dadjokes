@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🤣 Joke App – "Mỗi ngày một câu đùa"
 
-## Getting Started
+Ứng dụng kể chuyện cười với nhiều thể loại khác nhau, sử dụng API miễn phí từ JokeAPI.dev.
 
-First, run the development server:
+## 🌟 Tính năng
+
+- 🎲 **Random Joke**: Tự động gọi API để lấy joke ngẫu nhiên
+- 📂 **Chọn thể loại**: Người dùng chọn loại: Programming, General, Dark, Pun, Spooky
+- 🧼 **Lọc nội dung**: Có thể chọn lọc joke "Clean" hoặc "Edgy"
+- 🌙 **Dark/Light mode**: Auto đổi theo giờ hoặc bằng toggle
+- 🔁 **Nút "Joke mới"**: Gọi API để lấy joke mới
+- 🎤 **Nút "Đọc to"**: Sử dụng Web Speech API để đọc joke
+
+## 🧪 Công nghệ
+
+- **Framework**: Next.js 15
+- **Styling**: TailwindCSS 4
+- **API**: JokeAPI.dev
+- **Bổ sung**: Web Speech API để đọc joke
+
+## 🚀 Hướng dẫn chạy
+
+### Cài đặt
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone repository
+git clone [repository-url]
+
+# Di chuyển vào thư mục dự án
+cd joke-app
+
+# Cài đặt dependencies
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Chạy ứng dụng
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Chạy ở môi trường development với Turbopack
+npm run dev
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Build cho production
+npm run build
 
-## Learn More
+# Chạy bản production
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🎯 API đang sử dụng
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**[JokeAPI – jokeapi.dev](https://jokeapi.dev/)**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ví dụ call API:
 
-## Deploy on Vercel
+```bash
+https://v2.jokeapi.dev/joke/Programming,Miscellaneous?type=single&blacklistFlags=nsfw,racist,sexist
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 Hướng phát triển tương lai
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] Cho phép người dùng submit joke riêng
+- [ ] Tạo "joke history" để xem lại các câu đã đọc
+- [ ] Cho phép vote lên/xuống với mỗi câu đùa
+- [ ] Tích hợp chức năng "Gửi joke đến email bạn bè"
+
+## 📜 Giấy phép
+
+MIT
