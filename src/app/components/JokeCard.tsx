@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 type JokeType = {
   joke?: string;
@@ -18,7 +18,7 @@ export default function JokeCard({ category, contentFilter }: JokeCardProps) {
   const [joke, setJoke] = useState<JokeType | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const fetchJoke = async () => {
+  const fetchJoke = useCallback(async () => {
     setLoading(true);
     try {
       // Xây dựng URL API với bộ lọc nội dung
@@ -43,11 +43,11 @@ export default function JokeCard({ category, contentFilter }: JokeCardProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [category, contentFilter]);
 
   useEffect(() => {
     fetchJoke();
-  }, [category, contentFilter, fetchJoke]);
+  }, [fetchJoke]);
 
   if (loading) {
     return (
